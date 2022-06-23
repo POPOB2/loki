@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>global_Function</title>
+</head>
+<body>
+    <h1>內建函式(物件)</h1>
+    <script>
+        console.log("-------------------length/長度-------------------");
+
+        const say='hello world';
+        console.log(say.length);// 字串角度=每個內容有多少單字(長度)
+
+        const ary=[123,456,789];
+        console.log(ary.length);// 站在陣列角度=有多少內容(長度)
+
+        console.log("-------------------字串/數字 型態轉換-------------------");
+        let a = '5',b = 100;
+        // 字串 + 數字 = 都是字串直接相連
+        console.log(a+3); // 53
+        console.log(a+3+b); // 53100
+        // 數字 + 數字 = 數字
+        console.log(a+(b+3)); // 5103
+        // Number()型態轉換
+        console.log(Number(a)+3+b); // 108
+        // String()型態轉換
+        console.log(Number(a)+3+String(b)); // 8100
+
+        console.log("-------------------Math計算-------------------");
+        // Math計算 . 功能(值)
+        // Math.round(6.4) 四捨五入=>6
+        // Math.ceil (6.4) 無條件進位=>7
+        // Math.floor(6.4) 無條件捨去=>6
+        // Math.random() 0~1之浮點數(含0不含1)
+        
+        // 使用隨機值乘以倍數, 使倍數接近整數 但不含該乘數
+        // 因隨機數=0~1的小數點值不含整數1, 所以*15實際是0.999n*15=14.99n
+                console.log("隨機數的值 與 乘數後的值");
+                let rand=Math.random();
+                console.log(rand,rand*10); // 0~1 *10 => 0~10(不含10)
+                console.log(rand,rand*15); // 0~1 *10 => 0~10(不含15)
+
+        // 再使用floor無條件捨去讓0~14變成整數, 需要15?那就+1使用*16就會有0~15
+                console.log("將隨機*15後floor捨去 產生0~14");
+                console.log(Math.floor(rand*15));
+
+        // 起使數不想要0,想從1開始,也可以使用ceil無條件進位讓0變成1  14浮點變成15 使*15產生1~15
+        // 但使用無條件進位 有極低的機率產生0.00000n 進位後產生0 產生非預期的1~15
+                console.log("將隨機*15後ceil進位 產生0~15");
+                console.log(Math.ceil(rand*15));
+
+        // 所以通常不會選擇用無條件進位取整數, 而是用無條件捨去後 將乘數結果+1 如下
+        // Math.floor(Math.random()*15)+1 
+                console.log("先產生隨機數0~14結果,捨去小數點後+1變成1~15(0+1=1,14+1=15)");
+                console.log(Math.floor(rand*15)+1);
+        
+         
+        // 如上所述再使用大樂透舉例  拆解分析  buuld  1~49
+        // Math.random()*49  //隨機取出0.n ~ 48.n
+        // Math.floor(Math.random*49)  //將0.n ~ 48.n 去浮點變成 0~48
+        // Math.floor(Math.random*49)+1 //將去浮點後的0~48 +1 變成1~49
+        
+        // 從中間值50開始 build  50~120
+        // Math.random()*71  //隨機取出0.n ~ 70.n
+        // Math.floor(Math.random*71)  //將0.n ~ 70.n 去浮點變成 0~70
+        // Math.floor(Math.random*71)+50  //將去浮點數後的0~70 +50 變成50~120
+                console.log("產生50~120的隨機數");
+                console.log(Math.floor(rand*71)+50);
+
+        // try writting to custom function rand(min,max) to build min~max
+                console.log("使用Function輸入值,產生最小~最大值");
+                function randd(min,max){
+                    let result;
+                    result=Math.floor(Math.random()*(max-min+1))+min;
+                    return result;
+                    // return Math.floor(Math.random()*(max-min+1))+min;//客家戰術!
+                }
+                console.log(randd(50,120));
+
+    console.log("-------------------typeof 型態查詢-------------------");
+                let dataA='123',dataB=123,dataC=false;
+                let dataD=[456,"456"],dataE={jsn1:"789",jsn2:789};
+
+                console.log(typeof(dataA)); // 直接查詢型態
+                console.log(typeof(dataD[0])); // 用陣列索引index查詢
+                console.log(typeof(dataE.jsn1)); // 將object用.查詢內容
+                console.log(typeof(dataE['jsn2'])); // 將object用[]查詢內容
+    </script>
+</body>
+</html>
