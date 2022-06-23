@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+<body>
+    <h1>Date</h1>
+    <script>
+        // 正確的寫法為new Date() 近似於先產生一個空陣列用的let ary=new Array()
+        // 創造一個名為時間的物件(object)
+                let now=Date(); //跑一個函式Date()的結果 回傳值給now <傳送值> <typeof=string>
+                let time=new Date(); // 宣告一個Date()物件指定給time <傳送物件> <typeof=object>
+
+        /* Date()
+           不指定時間, 以瀏覽器現在時間為基準
+           若要指定:
+           1. 可以使用 年 月 日 時 分 秒 毫秒 來個別指定 */
+                let custom1=new Date(2020,12,31,23,59,59,999); // month為0~11
+                console.log(custom1);
+        // 2. 可使用ISO表示法來寫
+                let custom2=new Date("2020-12-31T23:59:59"); // ISO string
+                console.log(custom2);
+
+        /* 
+            對一個時間物件 進行抽取各單位數據
+            time.getFullYear();
+            time.getMonth();
+            time.getDate();
+            time.getHours();
+            time.getMinutes();
+            time.getSeconds();
+            time.getMilliseconds(); // 1000毫秒=1秒
+        */
+        //  運用時間戳記
+                let finalTime=new Date("2022-12-31T23:59:59"); 
+                let tmin = time.getTime(); // 現在的時間戳記
+                let tmax = finalTime.getTime(); // 年底的時間戳記
+                let beto1 = (tmax - tmin)/1000; // 現在減掉未來 再除一千將毫秒變為秒
+                let beto2 = Math.floor((tmax - tmin)/1000); // 將上述加上Math.floor去掉浮點數
+                console.log("距離跨年還有"+beto2+"秒(去浮點)");
+                
+
+                let bsec=0,bmin=0,bhur=0,bday=0;
+
+                console.log("---------處理前 各別為 : ---------");
+                bsec=beto1;
+                console.log("距離跨年還有"+bsec+"秒鐘");
+                bmin=beto1/60;
+                console.log("距離跨年還有"+bmin+"分鐘");
+                bhur=bmin/60;
+                console.log("距離跨年還有"+bhur+"小時");
+                bday=bhur/24;
+                console.log("距離跨年還有"+bday+"天");
+
+
+                console.log("-------------處理後 : -------------");
+                bsec=beto2%60; // 秒數餘數%60 == 除60後(進位後)剩餘的值
+                // bmin=Math.floor(beto2/60); // 除60 會得到未進位的小數
+                bmin=Math.floor(beto2/60)%60; // 除60 會得到未進位的小數, 在餘60 得到60進位後的餘數
+                bhur=Math.floor(beto2/60/60)%24; // 餘24 得到24進位後餘數
+                bday=Math.floor(beto2/60/60/24);
+                console.log(`距離今年結束還剩${bday}天${bhur}時${bmin}分${bsec}秒`);
+
+
+                console.log("-------------set功能-------------");
+                let nowis=new Date();
+                nowis.setDate(nowis.getDate()+15);// 使用set設定時間 為現在時間+15天
+                console.log(nowis);
+
+    </script> 
+</body>
+</html>
