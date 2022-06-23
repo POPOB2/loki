@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array && object</title>
+</head>
+<body>
+    <h1>array && object</h1>
+    <script>
+        // 陣列基礎-----------------------------------------------------------------------------------------------------------------
+        let ary=new Array(); // 正式的宣告一個陣列
+        let ary1=[]; // 宣告陣列的縮寫
+
+        ary1.push('aaa'); // .push('')將內容放入陣列
+        ary1.push('bbb');
+        ary1.push('ccc');
+        ary1[5]="ke"; // 在索引位置上塞入內容(前題為知道最後的索引為多少,以此接續 若原有內容的索引012 填入5 會再34產生empty,這樣的陣列不乾淨)
+
+
+
+        // 二維陣列 doubble array---------------------------------------------------------------------------------------------------
+        let ary2=new Array();
+        ary2[0]=[1,3,5]; // 在陣列索引上再放入陣列, 陣列中的陣列 稱為二維陣列
+        ary2[1]="hello word"; // 且二維陣列並無限定再放入陣列後只能再放入陣列, 可以穿插其它字串數字等類型
+        ary2[2]=["a","b","c"];
+        ary2[2][2]; // 若再F12想取出索引2的ABC的C, 先在第一個框輸入2對應放入ABC的陣列索引, 在第二個框也輸入對應C的位置的索引2
+
+        let ary3=[[1,3,5],"hello word",["a","b","c"]]; // 另一種連續寫入, 循序增加索引  不需手動輸入索引
+
+
+
+        // forEach 循序顯示陣列內容---------------------------------------------------------------------------------------------------
+        console.log("forEach 一般循序顯示----------------");
+        function show (val,key,asd) { //用於下方forEach的自訂函式, 函式名() 框號內變數越多,陣列內容顯示的越詳細
+            console.log(val,key,asd)
+        }
+        // forEach 會循序顯示自訂函式的變數值數量 個別為: 1.val(值)  2.key(索引)  3.詳細內容(通常不會用到第三個)
+        ary1.forEach(show);// 裡面需放入某個自訂函式, 該自訂函式至少要有一個變數用於顯示val
+
+
+
+        console.log("匿名函式第一層function進行log----------------");
+        // 直接使用匿名函, 將function直接寫入forEach內使用, 不需給function命名
+        ary2.forEach(function(valu){
+            console.log(valu);
+        }); 
+
+
+
+        // console.log("匿名函式第二層function進行log----------------");
+        // ary3.forEach(function(mydata){ // 只限定內部是個陣列才能正常運作, 若內部不只有陣列,還包含了字串或數字等其他類型 則會錯誤
+        //     mydata.forEach(function(mindata){
+        //         console.log(mindata);
+        //     })
+        // }); 
+
+
+
+        console.log("匿名函式第二層function進行log 使用if else除錯----------------");
+        ary3.forEach(function(mydata){
+        if(Array.isArray(mydata)){ // 判斷是陣列
+            mydata.forEach(function(mindata){
+                console.log(mindata);
+            });
+        }else{ // 判斷不是陣列
+            console.log(mydata); 
+        }
+        });
+
+
+
+        console.log("箭頭函式 將function改為=>,擺在後方, 效果和function相同----------------");
+        ary3.forEach((mydata)=>{
+        if(Array.isArray(mydata)){
+            mydata.forEach((mindata)=>{console.log(mindata);});
+        }else console.log(mydata);
+        });
+
+
+
+        console.log("filter 過濾----------------------------------------")
+        // filter 過濾  會自行過濾掉空字串---------------------------------------------------------------------------------------------------
+        // 1. 類似forEach, 循序的將陣列的每個值丟出來到指定的函式進行處理
+        // 2. 這個指定的函式(重點於判斷處理作業)進行作業時,最後通常會有return要吐回給filter,完成單次過濾工作
+        // 3. filter會收集所有retrun回來的值, 並轉換新的ary資料結構 完成工作
+        // 4. 所以你可以指定這個新ary給任何變數或塞入某位置
+
+        let newAry=ary1.filter(clearEmpty);// 設定newAry變數,值來自ary1陣列用filter賦值
+        function clearEmpty(val){// function執行名為clearEmpty的filter, 執行結果(濾出的陣列內容)轉為變數val
+            return val;// 再將濾出的陣列內容(變數val), retrun出去 由newAry接住
+            // newAry變成let newAry=['aaa','bbb','ccc','ke'];
+            
+            // 也可以將return新增條件 設置過濾條件 僅取出要的東西 如下
+            // return(val!="ke");// retrun出val 除了"ke"
+        }
+
+
+        console.log("for of----------------------------------------")
+        // for of(by ES6) array用------------------------------------------------------------------------------------
+        // 類似for迴圈+forEach的概念  差別於 是給陣列用的, 寫法上更為直覺簡潔 不像上述forEach需要再寫一個function函式去執行
+        for (const valu of ary2){ // for迴圈一個東西  設置變數 of 一個物件(陣列), 持續的將ary2用for賦值給valu 
+            console.log(valu); // 持續印出被ary2其陣列內容所賦值的valu的內容
+            // console.log(`the value=${valu}`); // string+array=>string+string(ary)
+        }
+
+
+        console.log("for in----------------------------------------")
+        // 物件(obj)------------------------------------------------------------------------------------------------
+        // +++array 陣列+++
+        let ary4=new Array();
+        ary4['dog']="kitty";// 可以這樣做 但非標準做法 可能無法以陣列原生列處理,導致可以放入值 卻無法取出值(如push,pop,for of等)
+        ary4['cat']="snopopy";
+        ary4[2]="number_2";
+        // 兩者差別 :
+        // ary使用[] 原生列較多 偏向數據處理(以index和value做規劃), 大量數據 分析處理 排序法 演算 過濾整理,<其實陣列也是一種特別的object>
+        // obj使用{} 原生列較少 偏向存放文字.值(以key和value做規劃), API 歸類整理 或物件導向
+
+        // +++Object 物件+++
+        let obj4={cat:"凱蒂貓",dog:"史努比"};// JSON
+
+        console.log("for in----------------------------------------")
+        // for in(by ES6) object用------------------------------------------------------------------------------------
+        for(const key in obj4){
+            console.log(key,obj4[key]);
+        }
+        console.log("--------------------------------------------------");
+
+        let obj5={cat:"凱蒂貓",dog:"史努比"}; // json
+        console.log(obj5.cat,obj5['cat']);// object 可以用.或[]取出內容
+
+        let have='cat' in obj5;
+        console.log(have);// true 表示該值存在
+
+    </script>
+</body>
+</html>
