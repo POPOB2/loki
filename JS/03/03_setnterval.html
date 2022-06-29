@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計時器 setInterval</title>
+</head>
+<body>
+    <script>
+        // setInterval 計時同 setTimeout-----------------------
+                // setInterval(()=>{
+                    // console.log("BOM");
+                // },2000);
+        // 
+                let i=0;
+                function replay() {
+                i++;
+                console.log(`${i} 秒が経過しました!!`);
+               if(i==3){
+                clearInterval(i);
+                console.log("ロードローラーだッ!!");
+               }
+            }
+               let DIO=setInterval(replay,1000);
+    </script>
+</body>
+</html>
