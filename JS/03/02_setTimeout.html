@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計時器</title>
+</head>
+<body>
+    <script>
+    // setTimeout 設定時間-----------------------------------------------------------------------------------------------------------------
+            // function delay(){
+                // console.log("BOM!! Game Over GG");
+            // }
+    // setTimeout 設定時間 第一個值為使用的函式 第二個值為倒計時時間(單位為毫秒 5秒=5000毫秒)
+            // setTimeout(delay,5000);
+
+    // 一次性的使用匿名函式 執行一樣的效果--------------------------------------------------------------------------------------------------
+            // setTimeout(function(){
+                // console.log("BOM!! BOM!! GG");
+            // },5000);
+    //  將一次性使用的匿名函式改為箭頭函式 執行一樣的效果-----------------------------------------------------------------------------------
+            // 一次性的使用匿名函式 執行一樣的效果
+            // setTimeout(()=>{
+                // console.log("BOM!! BOM!! GG斯密達!!");
+            // },5000);
+    
+    // clearTimeout 清除計時器-------------------------------------------------------------------------------------------------------------
+            // function delay(){
+                // console.log("Time out GG");
+            // }
+            // let myobj=setTimeout(delay, 10000);
+    // 上面將變數myobj設為10秒倒數 顯示"Time out GG"
+            // clearTimeout(myobj);// 10秒內執行clearTimeout清除了myobj的setTimeout
+
+    // 連續清除 可以透過函式物件的回饋索引值回傳 找到目標進行clear--------------------------------------------------------------------------
+                // function delay(){
+                //     console.log("BOM BOM BOM");
+                // }
+                // let myobj1=setTimeout(delay, 1000);
+                // let myobj2=setTimeout(delay, 1000);
+                // let myobj3=setTimeout(delay, 1000);
+                // console.log(myobj1,myobj2,myobj3);
+                // clearTimeout(1);
+                // clearTimeout(2);
+                // clearTimeout(3);
+    // 計時連續使用
+                function lokiRepeat(){
+                    console.log("安安");
+                    let a=setTimeout(lokiRepeat, 2000);
+                    console.log(a);
+                }
+                setTimeout(lokiRepeat,2000);
+            // or
+                // lokiRepeat();
+    </script>
+</body>
+</html>
