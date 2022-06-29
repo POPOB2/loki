@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 id="demo">Document<mark>Object</mark>Modal</h1>
+    <script>
+        // 僅搜尋id 顯示所有相關內容(全標籤與文字)
+                document.getElementById("demo");
+        let dm1=document.getElementById("demo");
+        console.log("僅搜尋id 顯示所有內容");
+        console.log(dm1);
+
+
+        // textContent 顯示純文字內容
+                document.getElementById("demo").textContent;
+        let dm2=document.getElementById("demo").textContent;
+        console.log("後綴textContent 顯示純文字內容");
+        console.log(dm2);
+
+
+        // innerHTML 顯示內標籤與文字內容
+                document.getElementById("demo").innerHTML;
+        let dm3=document.getElementById("demo").innerHTML;
+        console.log("後綴innerHTML 顯示內標籤與文字內容");
+        console.log(dm3);      
+        
+
+        console.log("縮短撰寫-----------------------");
+        var obj=document.getElementById("demo");
+        console.log(obj.textContent); // 純文字
+        console.log(obj.innerHTML); // HTML代碼
+
+        console.log("直接修改內容-------------------");
+        obj.textContent='DOM 物件'; // 修改純文字內容
+        // obj.innerHTML='na ni'; // 修改HTML代碼
+        console.log(obj);
+    </script>
+<!-- ------------------------------------------------------------------ -->
+    <ul id="demo2">
+        <li class="list">apple</li>
+        <li class="list">banana</li>
+        <li class="list">orange</li>
+        <li class="list">pineapple</li>
+    </ul>
+
+    <script>
+        // console.log("-------------------");
+        // let obj2=document.getElementById("demo2");
+        // console.log(obj2.textContent); // 純文字
+        // console.log(obj2.innerHTML);
+
+        // getElementsByClassName 陣列
+        console.log("用陣列搜尋0-------------------");
+        let ary0=document.getElementsByClassName("list"); // 先用getElementsByClassName()找到陣列
+        console.log(ary0[0]); // 再用[索引] 拿出陣列內容
+
+
+        console.log("用陣列搜尋1-------------------");
+        let ary1=document.getElementsByClassName("list")[1];
+        console.log(ary1);
+
+
+        console.log("客家陣列2-------------------");
+        console.log(document.getElementsByClassName("list")[2]);
+
+
+        console.log("陣列應用-------------------");
+        let ary3=document.getElementsByClassName("list")[3];
+        ary3.innerHTML="<a href='http://www.google.com'>鳳梨</a>"
+    </script>
+</body>
+</html>
