@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tryJS</title>
+</head>
+<body>
+    <!-- 
+           如果使用window.onload執行document, 會重新再創造一份空白的document進行寫入, 會重新再創造一份空白的document進行寫入
+           順序如下 : 
+           1. 先執行並顯示 <h1>Hello World</h1>
+           2. 再執行並顯示 function write("我的第零個JS網頁顯示"){write();}
+           3. 回到第一個window.onload創造一份空白的document進行寫入
+              此時顯示的<h1> 和 function write 被新的空白document覆蓋
+           4. 執行window.onload=function(){ 找出自訂函式write(); }
+           5. 執行並顯示 function write("我的第零個JS網頁顯示"){write();}
+     -->
+    <script>
+        // window.onload 整個頁面讀取完後, 最後才執行window.onload的內容(匿名函式)
+        window.onload=function(){
+            write();
+        }
+    </script>
+
+<h1>Hello World</h1>
+
+    <script>
+    function write(){
+        // 如果該指令是在document完成後執行, 會重新再創造一份空白的document進行寫入
+        document.write("我的第零個JS網頁顯示");// 使用document告訴瀏覽器再JS區域外面產生物件內容
+    }
+    write();
+    </script>
+</body>
+</html>

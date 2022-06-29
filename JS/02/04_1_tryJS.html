@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tryJS</title>
+</head>
+<body>
+
+    <script>
+        // window.onload 整個頁面讀取完後, 最後才執行window.onload的內容(匿名函式)
+        window.onload=function(){
+            // write();
+        }
+    </script>
+
+<h1>Hello World</h1>
+<h2 id="wirteHere">使用物件找到內容</h2>
+
+    <script>
+    function write(){
+        // 如果該指令是在document完成後執行, 會重新再創造一份空白的document進行寫入---------------------------------------------------------------------
+            // document.write("<h2>我的第一個JS網頁顯示</h2>");
+
+            // document.getElementById("wirteHere"); // 再document內找到 外面某個id 叫做XXX的位置------------------------------------------------------
+
+        /* 近似於 document=CSS .getElementById=#  ("wirteHere")=id名wirteHere  textContent=功能--------------------------------------------------------
+            CSS : #wirteHere{textContent} */
+            document.getElementById("wirteHere").textContent; // 找到id為wirteHere的物件 並 使用其內容
+            document.getElementById("wirteHere").textContent="BBB"; // 找到id為wirteHere的物件 並 將其內容改為"BBB"
+
+        // DOM操作, 從HTML的節點進行相關行為
+    }
+    // write();
+    </script>
+</body>
+</html>
