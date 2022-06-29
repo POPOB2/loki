@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彈跳視窗alert/confirm/prompt</title>
+</head>
+<body>
+    <script>
+        // *alert 提示用, 讀取到此會暫停解讀動作直到用戶回饋
+            // alert("hello world"); 
+
+
+        // *confirm 提問取得布林值
+            // confirm("question");
+            // let result=confirm("question?"); // confirm的回饋結果 會回傳布林值
+            // console.log(result); // 這裡用confirm賦值 變數result來顯示結果
+            // alert(`you selected the ${result}`);
+
+
+        // *prompt 提問取得字串 根據有無內容 也會得出布林值
+            // prompt("question?","default value"); // 當輸入第二個值時 其內容為預設字串 顯示在輸入欄內
+            // let reAns=prompt("question?");
+            // console.log(reAns);
+            // alert(`you selected the ${reAns}`);
+        //  prompt-其他應用-if else
+            // let reAns=prompt("question?");
+            // if(reAns) alert(`your messege is ${reAns}`);
+            // else alert("you don't answer me!!");
+        //  prompt-其他應用-三元運算子
+                let reAns=prompt("question?");
+                reAns?alert(`your messege is ${reAns}`):alert("you don't answer me!!");
+            //or
+                alert(reAns?`your messege is ${reAns}`:"you don't answer me!!");
+    </script>
+</body>
+</html>
