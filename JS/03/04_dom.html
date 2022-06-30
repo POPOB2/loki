@@ -41,6 +41,7 @@
         console.log(obj);
     </script>
 <!-- ------------------------------------------------------------------ -->
+    <h1>水果清單:</h1>
     <ul id="demo2">
         <li class="list">apple</li>
         <li class="list">banana</li>
@@ -69,9 +70,13 @@
         console.log(document.getElementsByClassName("list")[2]);
 
 
-        console.log("陣列應用-------------------");
+        console.log("陣列應用 把li標籤換成a標籤 並改內容為鳳梨-------------------");
         let ary3=document.getElementsByClassName("list")[3];
-        ary3.innerHTML="<a href='http://www.google.com'>鳳梨</a>"
+        ary3.innerHTML="<a href='http://www.google.com'>鳳梨</a>";
+
+
+        console.log("搜尋所有相關標籤-------------------");
+        console.log(document.getElementsByTagName("h1"));
     </script>
 </body>
 </html>
