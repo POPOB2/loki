@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑鼠-事件-描述</title>
+</head>
+<body>
+    <h1>這是HTML屬性下的滑鼠事件</h1>
+    <input type="button" value="onclick demo" onclick="alert('這是HTML屬性下的滑鼠事件')">
+    
+    
+    <hr><!-- --------------------------------------------------------------------- -->
+    <input type="button" value="Myonclick1" onclick="chgCSS1(this)" id="t1">
+<script>
+    // 未按下onclick觸發 未將function chgCSS1把this值帶入chgCSS1的(obj1)之前, 
+    // test沒有(obj1)值  對於test的後續行為不會有反應
+    // 若按了之後 再去對test下達指令 在有值的情況下會產生反應
+    function chgCSS1(obj1){
+        test=obj1;
+        // 如下log, 按按鈕前再F12搜尋log test查無資料, 按按鈕後 再F12查的到
+        console.log(test);
+        console.log(test.value);
+        
+    }
+</script><!-- --------------------------------------------------------------------- -->
+     <hr><!-- --------------------------------------------------------------------- -->
+     <input type="button" value="Myonclick2" onclick="chgCSS2(this)" id="t2">
+     <!-- 
+         - 物件的物件 與 物件的值 差異
+         document.getElementById("t2") 查詢id為tt的物件 
+
+
+         document.getElementById("t2").style.color="red"; 
+         - 再id為tt的物件>找出其style物件>再向下找出color物件 賦值red
+         - 得出"red" , 這是color物件 內容的值
+
+
+         document.getElementById("t2").style="color:red;";
+         - 再id為t2的物件>找出其style裡名為color屬性的值 改為red
+         - 得出"color:red;" , 這是style裡的字串
+     -->
+<script>
+        function chgCSS2(obj2){
+            obj2.style="color:red; font-size:30px;";
+        }
+</script><!-- --------------------------------------------------------------------- -->
+     <hr><!-- --------------------------------------------------------------------- -->
+     <input type="button" value="Myonclick3" onclick="chgCSS3(this)" id="t3">
+<script>
+    function chgCSS3(obj3){
+        if(obj3.style.color=="green"){
+            // obj3.style.color=null;
+            // obj3.style.fontSize=null;
+
+            // obj3.style=null; // 或是直接清除style物件內的所有物件的值, 但style屬性還在
+
+            // 移除屬性 removeAttribute ("移除的屬性")
+            obj3.removeAttribute("style"); // 整個style會被移除
+        }else{
+            obj3.style.color="green"; // 這寫法是 物件 內容的值
+            obj3.style.fontSize="30px"; // 使用指定物件編寫時 以F12物件設定為主 所以這裡是fontSize而不是font-size
+
+            // obj3.style="color:green; font-size:30px" // 這寫法是 style裡的字串     
+        }
+    }
+</script><!-- --------------------------------------------------------------------- -->
+     <hr><!-- --------------------------------------------------------------------- -->
+     <input type="button" value="My onmousedown" onmousedown="chgCSS4(this)"><!-- 點下去瞬間 產生反應 -->
+     <input type="button" value="My onmouseup" onmouseup="chgCSS4(this)"><!-- 點下去放開後 產生反應 -->
+     <input type="button" value="My onmouseover" onmouseover="chgCSS4(this)"><!-- 鼠標放上去瞬間 產生反應 -->
+     <input type="button" value="My onmouseout" onmouseout="chgCSS4(this)"><!-- 鼠標放上去離開後 產生反應 -->
+     <hr><!--  -->
+     <input type="text" value="My onchange / 輸入有變化" onchange="chgCSS4(this)"><!-- 欄位內容變化後 離開欄位 產生反應 -->
+     <input type="text" value="My onblur / 失去焦點時" onblur="chgCSS4(this)"><!-- 離開欄位內容 產生反應 -->
+     <input type="text" value="My onfocus / 進入焦點時" onfocus="chgCSS4(this)"><!-- 進入欄位內容 產生反應 -->
+<script>
+    function chgCSS4(obj4){
+        obj4.style="color:red; font-size:30px;";
+    }
+</script><!-- --------------------------------------------------------------------- -->
+     <hr><!-- --------------------------------------------------------------------- -->
+     <div id="fake"></div>
+<script>
+    //  function chgCSS5(obj5){
+    //     if(obj5.style.color=="red"){
+    //         obj5.removeAttribute("style");
+    //     }else{
+    //         obj5.style="color:red; font-size:30px";
+    //     }
+    //  }
+     let fakebtn=document.getElementById("fake");
+     fakebtn.style="background-color:gray; box-shadow:2px 2px 4px 0px black; cursor:pointer; display:inline; padding:5px; border-radius:5px; color:lightgreen;";
+     fakebtn.innerHTML="假按紐"; // 使用innerHTML "賦予內容"
+    //  fakebtn.onclick=chgCSS5(fakebtn); // 這樣做會直接執行 所以需要過場一個匿名函式 使得vhg(fakebtn)可以該事件下 才執行
+     fakebtn.onclick=function(){
+        fakebtn.style.backgroundColor=fakebtn.style.backgroundColor=="darkcyan"?"gray":"darkcyan";
+     }
+</script><!-- --------------------------------------------------------------------- -->
+
+<script>
+    // 顯示鍵盤按鍵 對應 的編號(ASCII)
+    document.onkeydown=getcode;
+    function getcode(){
+        console.log(event.keyCode);
+        // fakebtn.innerHTML=event.keyCode;
+    }
+</script><!-- --------------------------------------------------------------------- -->
+</body>
+</html>
