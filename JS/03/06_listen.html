@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listener</title>
+</head>
+<body>
+    <input type="button" value="try it" id="ock">
+
+    <script>
+        // 監聽事件(交代事件 監聽監控 按鈕)
+        let mybtn=document.getElementById("ock");
+        // 增加一個監控時間
+        // 條件1.做什麼行為(點擊事件) 
+        // 條件2.點擊時發生什麼事情(執行一個匿名函式)
+        mybtn.addEventListener("click",function(){
+            alert("it's click");
+        });
+        mybtn.addEventListener("mouseover",myfun1);
+        mybtn.addEventListener("mouseover",myfun2);
+        mybtn.addEventListener("mouseover",myfun3);
+
+        function myfun1() {
+            alert("it's mouse over");
+        }
+        function myfun2() {
+            alert("it's mouse over again");
+        }
+        function myfun3() {
+            alert("it's mouse over againnnnn");
+        }
+        /* 
+           總結 document. getElementById 和 addEventListener
+           比起在HTML寫onclick那種當需要執行兩個事件時較需要應變, 容易寫死且程式碼較長 
+           使用document.事件, 使用起來彈性較高 且F12看起來較乾淨不容易被看見內容
+        */
+
+        // 清除設定使用document.removeEventListener("事件行為",事件內容);
+        mybtn.removeEventListener("mouseover",myfun3);
+        </script>
+<!-- -------------------------------------------------------------------------------------------------------- -->
+        <div id="mydiv">hello</div>
+        <script>
+            let mydiv=document.getElementById("mydiv");
+            console.log("--------顯示類型--------");
+            console.log(mydiv.innerHTML); // 一般使用
+            console.log(mydiv.textContent); // 一般使用
+            console.log(mydiv.innerText); // 避免使用  早期IE專用
+        /* 
+            innerText已不再W3C規範內
+            innerText還能使用是因為google chrome為了整合早期使用該寫法的網頁
+            將innerText 設為等同 textContent
+        */
+        </script>
+<!-- -------------------------------------------------------------------------------------------------------- -->
+        <script>
+            console.log("--------取得屬性--------");
+            // 文謅謅
+            console.log(mybtn.attributes.id); // 從mybtn取得 屬性 為 id內容
+            console.log(mybtn.attributes.type); // 從mybtn取得 屬性 為 型態內容
+            // 直接(通常使用這個)
+            console.log(mybtn.id); // mybtn的id為
+            console.log(mybtn.type); // mybtn的型態為
+        </script>
+<!-- -------------------------------------------------------------------------------------------------------- -->
+        <div id="mydiv2">hello2</div>
+        <script>
+            console.log("--------賦予屬性--------");
+            let mydiv2=document.getElementById("mydiv2");
+            // 賦予設定setAttribute("設定類型","設定內容")
+            mydiv2.setAttribute("class","test"); // 再id為mydiv2的標籤 賦予一個屬性class="test"
+            console.log(mydiv2);
+            // setAttribute("","") 增加屬性與值
+            // removeAttribute("") 移除屬性
+            
+        </script>
+</body>
+</html>
