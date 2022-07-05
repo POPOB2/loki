@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>節點</title>
+</head>
+<body>
+    <p id="demo">按這裡</p> <!-- click & log功能寫在js -->
+    <p onclick="console.log(456);newAdd();">也可以按這裡</p> <!-- click寫再html  log寫再js -->
+    <p id="listen">或按這裡</p> <!-- 使用js的事件功能 將click & log功能寫在js -->
+    <!-- <button>YAA!</button> -->
+
+    <script>
+        document.getElementById("demo").onclick=()=>{
+            console.log(123);
+            newAdd();// 新增按鈕
+        };
+
+        document.getElementById("listen").addEventListener("click",()=>{
+            console.log(789);
+            newAdd();// 新增按鈕
+        });
+    // 使用 createElement 創建元素---------------------------------------------------------------------------
+        function newAdd(){//此function為 新增內容為YAA的按鈕
+            let=newbtn=document.createElement("button"); // 創建元素button為$newbtn
+            newbtn.textContent="YAA"; // 該帶有button元素的$newbtn 的 文字內容為"YAA"
+            // 使用 appendChild 追加子元素
+            document.body.appendChild(newbtn); /* 再父節點底下(此為body) 
+                                                  執行appendChild() 追加子元素
+                                                  (框號內放入要新增的子元素)*/
+            setTimeout(() => {// 5秒後清除新增的子元素
+                document.body.removeChild(newbtn);//removeChild() 刪除子節點
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
