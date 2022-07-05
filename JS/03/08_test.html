@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習</title>
+</head>
+<!-- 利用自訂函式 一個控制變形 一個控制顏色 再用if else 判斷顏色的變換 -->
+<body>
+    <div id="blk" style="width:100px; height:100px; background-color:red"></div>
+    <!-- border-radius:50% 圓形 -->
+    <!-- width:0; height:0; 
+         border-left:50px solid transparent; 
+         border-right:50px solid transparent; 
+         border-botton:100px solid red; 三角形 -->
+    <hr>
+    <button onclick="trans('a')">正方形</button>
+    <button onclick="trans('b')">圓形</button>
+    <button onclick="trans('c')">三角形</button>
+    <input type="text" value="#color" onchange="clr(this)">
+    <!-- 可以使用this傳值給clr Function 也可以用id傳值 -->
+    <!-- <input type="text" value="#color" onchange="clr(this)" id="chgClr"> -->
+
+    <script>
+        let blk=document.getElementById("blk");
+        let nowclr="red"; // 設一個預設顏色的全域變數(整頁代碼都能讀寫它)
+        function trans(todo){
+            switch(todo){
+                case 'a':
+                    blk.style=`width:100px; height:100px; background-color:${nowclr}`
+                break;
+                case 'b':
+                    blk.style=`width:100px; height:100px; border-radius:50%; background-color:${nowclr}`
+                break;
+                case 'c':
+                    blk.style=`width:0; height:0;border-left:50px solid transparent; border-right:50px solid transparent; border-bottom:100px solid ${nowclr}`;
+                break;
+            }
+        }
+
+        function clr(chgclr) {
+            // console.log(chgclr.value); // 測試該id的value
+            // 當blk的style有backgroundColor執行, 否則執行else (這裡將backgroundColor是否存在 作為布林值判斷)
+            if(blk.style.backgroundColor)blk.style.backgroundColor=chgclr.value;// for正方,圓形
+            else blk.style.borderBottom=`border-bottom:100px solid ${chgclr.value}`; // for 三角形
+            nowclr=chgclr.value; // 複寫到目前顏色, 使得下一次onclick變形能正常顯色
+        }
+    </script>
+    <!-- ------------------------------------------------------------------------- -->
+    <script>
+        // F12 測試其它形狀的方式
+        blk.style.clipPath="(50% 0%, 0% 100%, 100% 100%)"
+        blk.style.clipPath="circle(50% at 50% 50%)"
+        blk.style.clipPath="inset(0 0 0 0)"
+        blk.style.clipPath="polygon(50% 0%, 0% 100%, 100% 100%)"
+    </script>
+
+</body>
+</html>
