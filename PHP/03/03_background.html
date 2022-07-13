@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於圖片的各種屬性設定</title>
+    <style>
+        div{
+            /* 連寫 */
+            background-image: url("http://picsum.photos/500/100/?random=1"),
+                              url("http://picsum.photos/500/300/?random=2"),
+                              url("http://picsum.photos/500/100/?random=3");
+            
+            /* 加逗號 把上面連寫 個別控制 */
+            background-repeat: no-repeat, no-repeat, repeat;
+
+            /* 加逗號 把上面連寫 個別定位 */
+            background-position: left top, left 100px, left bottom;
+            background-color: red;
+
+            /* 縮寫 多組宣告 */
+            background: url("http://picsum.photos/500/100/?random=1")no-repeat left top,
+                        url("http://picsum.photos/500/300/?random=2")no-repeat left 100px,
+                        url("http://picsum.photos/500/300/?random=3")no-repeat left bottom;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:500px; height:500px"></div>
+</body>
+</html>
