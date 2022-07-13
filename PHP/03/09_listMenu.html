@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list做選單 inline block 差異</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            background: lightgreen;
+            text-align: center;
+            
+        }
+        li{
+            /* li預設為block屬性 設為inlineblock才會使其 變成橫向排列 */
+            /* 當使用inlineblock做橫向排列時 會有間隔4px的都市傳說現象 */
+            background: darkorange;
+            display: inline-block;
+            /* display: inline; */
+            /* display: block; */
+        }
+        a{
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+
+
+            /* a再inline-block狀態下是行間區塊 所以可以藉由pad 撐開高度 */
+            /* display: inline-block; */
+            /* display: block; */
+
+            /* a再inline狀態下是行間(文字) 所以無法藉由pad 撐開高度 高度由文字高度決定 但可以改變左右寬度 */
+            /* display: inline; */
+        }
+    </style>
+</head>
+<body>
+<!-- ul>(li>a)*4 -->
+<ul>
+    <li><a href="#">關於我們</a></li>
+    <li><a href="#">產品介紹</a></li>
+    <li><a href="#">客戶案例</a></li>
+    <li><a href="#">售後服務</a></li>
+</ul>
+</body>
+</html>
