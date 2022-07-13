@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於圖片的各種使用差異</title>
+    <style>
+        div{
+            color: red;
+        }
+    </style>
+</head>
+<body style="margin:0;">
+    <!-- 廣告圖常用的做法(RWD) 提供固定高度, 在藉由cover展示全圖, position: center把圖片固定在指定高度的中央(最終依照不同的設備畫面 可以使廣告不被裁切) -->
+    <div style="background-image: url('http://picsum.photos/1000/600/?random=1');
+                background-size: cover;
+                height: 300px;
+                background-position: center;
+    ">這個使用了height</div>
+
+    <!-- 圖片效果 使用圖片的原尺寸固定的顯示在畫面-------------------------------------------------------------------------- -->
+    <img src="http://picsum.photos/1000/600/?random=1" style="max-width:100%;">
+    <!-- 圖片效果 + 圖片填滿方式(控制裁切 object-fit:cover )---------------------------------------------------------------- -->
+    <img src="http://picsum.photos/1000/600/?random=1" style="height:300px; width:100%; object-fit:cover;">
+
+
+    
+    <!-- 使用cover置中, 
+         再使用padding-top:60%放大能放圖片的位置
+         若使用height:vh:60% 和padding-top不同 height會取得固定高度 需要縮到一定大小才能看到完整圖片
+    -->
+
+    <!-- 如何用BG模擬一張普通圖片------------------------------------------------------------------------------------------- -->
+    <div style="background-image: url('http://picsum.photos/1000/600/?random=1');
+                background-size: cover;
+                padding-top: 60%;
+    ">這個使用了padding-top</div>
+
+    
+</body>
+</html>
