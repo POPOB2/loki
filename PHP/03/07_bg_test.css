@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    text-align: center;
+}
+table{
+    margin: 1rem;
+    display: inline-block;
+}
+table,tr,td{
+    border: 1px solid black;
+}
+td{
+    width:200px ;
+    height: 200px;
+    padding: 0;
+}
+.a{
+    background-color: red;
+}
+.b{
+    background: url("http://picsum.photos/50/50/?random=1");
+
+    background-size: cover;
+    /* or */
+    /* background-size: 100%; */
+}
+.c{
+    background: url("http://picsum.photos/50/50/?random=1");
+
+    background-repeat: repeat no-repeat  ;
+    /* or */
+    /* background-repeat: repeat-x; */
+}
+.d{
+    background: url("http://picsum.photos/50/50/?random=1");
+    background-repeat: no-repeat repeat;
+}
+.e{
+    background: url("http://picsum.photos/50/50/?random=1");
+    background-repeat: no-repeat;
+
+    background-position: center;
+    /* or */
+    /* background-position: 50% 50%; */
+    /* or */
+    /* background-position: 50%; */
+}
+.f{
+    background: url("http://picsum.photos/50/50/?random=1");
+    background-repeat: no-repeat;
+    background-color: rgb(249, 251, 150);
+    background-position: center;
+}
+.g{
+    /* background: url("http://picsum.photos/200/50/?random=1"),
+                url("http://picsum.photos/200/100/?random=2")center,
+                url("http://picsum.photos/200/50/?random=1")left bottom;
+                background-repeat: no-repeat; */
+
+                /* or */
+                background:
+                url("http://picsum.photos/200/100/?random=2")no-repeat center,
+                url("http://picsum.photos/200/50/?random=1");
+}
+.h{
+    /* element : lg -> background: linear-gradient */
+    background: linear-gradient(to right, black,blue);
+}
+.i{
+    /* element : 1.bg->background  
+               2.刪除句尾的 ;  
+               3.輸入r ->radial-gradient 
+               4.補上句尾的 ; 
+               */
+    background: radial-gradient(circle,black,white);
+
+}
