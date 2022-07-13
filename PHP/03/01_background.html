@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於圖片的各種屬性設定</title>
+    <style>
+        div{
+            /* 背景  圖片與純色 */
+            background-image: url("http://fakeimg.pl/300x100");
+            background-color: darkorange;
+            
+
+            /* 圖片尺寸-------------------------------------------------------- */
+            /* 預設值auto 等比例放大 */
+                    background-size: 100px 100px;
+
+            /* 100% 會變形圖片大小 填滿橘色區塊 */
+                    background-size: 100% 100%;
+
+            
+            /* 
+               - background-size以下兩種
+               - cover(滿版超出裁切)
+               - contain(等比例極限不切)
+            */
+
+            /* -----對於上傳的圖片 大小不一 常見的處理方法 使用以下兩個值 產生 圖片放大置中並裁切掉周遭的效果----- */
+            /* cover直接蓋滿整個螢幕 超出橘色的部分被直接切掉 */
+            /* 此時圖片中間點在整個畫面中央 所以只顯示一部分圖片在橘色區塊 */
+                    /* background-size: cover; */
+            
+            /* 使用定位 中央 讓圖片中間 回到橘色塊內的中間 */
+            /* 這樣可以讓圖片中間之外的區塊 被切除在橘色之外 */
+                    /* background-position: center; */
+
+            /* -------------------圖片置中不裁切------------------- */
+                    background-size: contain;
+                    background-position: center;
+
+
+
+            /* 定位點---------------------------------------------------------- */
+            /* left right=X,  top bottom=y */
+            /* background-position: left bottom; */
+
+            /* 0%~100% 為左到右 上到下的調整 */
+            /* background-position: 100% 100%; */
+
+            /* 也可以使用px 左右 上下 依照區塊大小與背景大小調整 */
+            /* background-position: 490px 200px; */
+
+            /* 數值的部分  可以負值==反方向 */
+
+
+
+            /* 背景圖擺放設定-------------------------------------------------- */
+
+            /* 一個值時XY軸, 兩個值時1.Y軸 2.X軸 值為no-repeat或repeat */
+            background-repeat: no-repeat ; 
+
+            /* 左到右填滿 不切圖 所以當總空間不足時 會使圖片變形 */
+            /* background-repeat: round no-repeat;  */
+
+            /* 填滿 但不變形 所以當總空間不足時 會產生間隔空隙 */
+            /* background-repeat: space no-repeat;  */
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 800px; height: 600px;"></div>
+</body>
+</html>
