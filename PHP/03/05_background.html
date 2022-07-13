@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漸層色</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+
+            /* bg-color為純色 不歸類在漸層色的內容 */
+                    /* background-color: pink; */
+
+            /* ---------------------------------線狀漸層色 使用的是bg-image 把url() 換成linear-gradient(漸層顏色)--------------------------------- */
+
+            /* 可以在第一個值寫角度  預設為上到下0~180度  再CSS中 度的單位為deg 如下 */
+                    background-image: linear-gradient(45deg,orange,pink,purple);
+
+            /* 比較固定的寫法則是再第一個值寫 to right/left/top/bottom */
+                    background-image: linear-gradient(to left,orange,pink,purple);
+
+            /* 再數字後面增加%  可以調整顏色的靠近程度(位置) */
+                    background: linear-gradient(149deg,rgba(180,99,246,0.7)15%,rgba(255,189,160,1)49%,rgba(0,212,255,0.6)76%);
+
+
+            /* ---------------------------------放射漸層色 使用的是bg-image 把url() 換成radial-gradient(漸層顏色)--------------------------------- */
+
+            /* background的元素改用 radial-gradient() 可以使用放射狀漸層, 未輸入第一個值時 預設為ellipse(橢圓) */
+                    background: radial-gradient(rgba(180,99,246,0.7)0%,rgba(255,189,160,1)46%,rgba(0,212,255,0.6)100%);
+
+            /* 第一個值 可以使用 circle 改為正圓形放射狀  */
+                    background: radial-gradient(circle,rgba(180,99,246,0.7)0%,rgba(255,189,160,1)46%,rgba(0,212,255,0.6)100%);
+
+            /* ----------- */
+            background: 
+                /* transparent=透明色 */
+                linear-gradient(0deg, #b463f6, transparent),
+                linear-gradient(120deg, #00d4ff, transparent),
+                linear-gradient(240deg, #72ff4f, transparent);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
