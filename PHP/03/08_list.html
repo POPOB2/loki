@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            /* 順序數字 首圖標 */
+                /* list-style-type: decimal; */
+            
+                list-style-type: square;
+            /* 一般預設為outside 將首圖標 設在padding範圍內 */
+                /* list-style-position: outside; */
+            /* 首圖標 設為 內 該圖標 將不再padding範圍 而是納入內容範圍 */
+                list-style-position: inside;
+
+            /* 使用自訂義圖案 作為首圖標 */
+                /* list-style-image: url('123.jpg'); */
+
+            /* 縮寫 */
+                /* list-style: square inside url('123.jpg'); */
+
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>lorem1</li>
+        <li>lorem2</li>
+        <li>lorem3</li>
+        <li>lorem4</li>
+    </ul>
+
+    <!-- 有順序 所以可以使用start=""作為起始數 -->
+    <ol start="5">
+        <li>lorem1</li>
+        <li>lorem2</li>
+        <li>lorem3</li>
+        <li>lorem4</li>
+    </ol>
+</body>
+</html>
