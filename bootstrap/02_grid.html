@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 網格 Grid</title>
+    <!-- BS樣式表 -->
+    <link rel="stylesheet" href="bootstrap.css"> 
+    <script src="jquery-3.6.0.js"></script> 
+    <script src="bootstrap.bundle.min.js"></script> 
+    <style>
+        /* 定義第幾個container */
+        .container:nth-of-type(1) .row>div {
+            background: #ccc;
+            border: 1px solid;
+        }
+        .container:nth-of-type(2) .row>div {
+            background: #ca5;
+            border: 1px solid;
+        }
+        .row{
+            margin: 20px 0;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <div class="row">
+            <div class="col"><a href="https://bootstrap.hexschool.com/docs/4.2/layout/grid/">網格說明</a></div>
+            <div class="col"><a href="https://960.gs/">網格參考網站</a></div>
+        </div>
+    </div>
+   
+    <!-- container本身提供 15px的padding 於左右兩側留空間 -->
+    <div class="container">
+        <!-- 寬空間通常為12格進行分配, 在以下內容後方加上數字 分配比例 -->
+        <div class="row"> <!-- row本身提供display:flex和wrap, 其內部的皆為item 並提供左右兩側margin-15px 用來填補container的15px padding 使row為填滿狀態 -->
+          <div class="col-3"> One of three columns</div> <!-- col本身提供 flex-grow:1 使同為col的東西 可以平均分配在row的flex內 -->
+          <div class="col-3"> One of three columns</div> <!-- col後面加數字 可以分配比例 此為3/12 -->
+          <div class="col-6">One of three columns</div>
+        </div>
+        <!-- ---------------------------------------------------------------------------------- -->
+        <!-- 6+6分配比例 -->
+        <div class="row"> 
+            <div class="col-6"> One of three columns</div>
+            <div class="col-6"> One of three columns</div>
+        </div>
+        <!-- ---------------------------------------------------------------------------------- -->
+        <div class="row">
+            <div class="col">One of three columns</div>
+            <div class="col">One of three columns</div>
+            <div class="col">One of three columns</div>
+            <div class="w-100"></div> <!-- w-100  寬度100% -->
+        </div>
+    </div>
+<!-- ---------------------------------------------------------------------------------- -->
+
+<!-- RWD -->
+<div class="container">
+    <div class="row"> 
+      <div class="col-12 col-sm-6"> One of three columns</div> <!-- 設為獨佔12格, 當尺寸為sm規範時 改為6格的寬度大小 -->
+      <div class="col-md-auto"> One of three columns -col-md-auto</div> <!-- col-md-auto 用文字長度設定寬度, 且提供該文字寬度 寬度100% -->
+      <div class="col-12 col-sm-6"> One of three columns</div>
+    </div>
+</div>
+
+
+</body>
+</html> 
