@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap spacing</title>
+
+    <!-- Local Framework Start -->
+    <link rel="stylesheet" href="bootstrap.css"> 
+    <script src="jquery-3.6.0.js"></script> 
+    <script src="bootstrap.bundle.min.js"></script>
+    <!-- Local Framework End -->
+
+    <style>
+        .container .col{
+            background: #ccc;
+            border: 1px solid #3333;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="col"><a href="https://bootstrap.hexschool.com/docs/4.2/utilities/spacing/">間隔說明</a></div> -->
+    <!--  {property}{sides}-{size} 三個框  分別為  屬性(p,m)  邊緣(y,b,l,r,x,y)  尺寸(n5 ~ 0 ~ 5 || auto) -->
+    <!-- 1rem=16px, 在size的級距中 1~5 分別為
+         1 = 乘 0.25rem (4px)
+         2 = 乘 0.5 rem (8px)
+         3 = 乘 1.0 rem (16px)
+         4 = 乘 1.5 rem (24px)
+         5 = 乘 3.0 rem (48px)
+    -->
+    <div class="p-1 m-3 "></div>
+
+    <div class="container"> 
+        <div class="row"> 
+          <div class="col"> One of three columns</div>
+          <div class="col"> One of three columns</div>
+          <div class="col"> One of three columns</div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
