@@ -23,6 +23,22 @@
             margin: 20px 0;
             margin-bottom: 20px;
         }
+        /* .class名:nth-of-type(值)  根據輸入的(值), 可以指定選取第幾個同名class */
+        .row:nth-of-type(1)>div {
+            background: red;
+            color: white;
+            border: 1px solid;
+        }
+        .row:nth-of-type(2)>div {
+            background: blue;
+            color: white;
+            border: 1px solid;
+        }
+        .row:nth-of-type(3)>div {
+            background: orange;
+            color: white;
+            border: 1px solid;
+        }
     </style>
 </head>
 <body>
@@ -35,7 +51,7 @@
    
     <!-- container本身提供 15px的padding 於左右兩側留空間 -->
     <div class="container">
-        <!-- 寬空間通常為12格進行分配, 在以下內容後方加上數字 分配比例 -->
+        <!-- row 寬空間通常為12格進行分配, 在以下內容後方加上數字 分配比例 -->
         <div class="row"> <!-- row本身提供display:flex和wrap, 其內部的皆為item 並提供左右兩側margin-15px 用來填補container的15px padding 使row為填滿狀態 -->
           <div class="col-3"> One of three columns</div> <!-- col本身提供 flex-grow:1 使同為col的東西 可以平均分配在row的flex內 -->
           <div class="col-3"> One of three columns</div> <!-- col後面加數字 可以分配比例 此為3/12 -->
@@ -52,20 +68,63 @@
             <div class="col">One of three columns</div>
             <div class="col">One of three columns</div>
             <div class="col">One of three columns</div>
-            <div class="w-100"></div> <!-- w-100  寬度100% -->
+            <div class="w-100"></div> <!-- w-100==寬度100%, 可以用於類似br的強迫換行 但建議用新的row+col來做換行 後續規劃上較好調整 -->
         </div>
     </div>
 <!-- ---------------------------------------------------------------------------------- -->
 
 <!-- RWD -->
-<div class="container">
-    <div class="row"> 
-      <div class="col-12 col-sm-6"> One of three columns</div> <!-- 設為獨佔12格, 當尺寸為sm規範時 改為6格的寬度大小 -->
-      <div class="col-md-auto"> One of three columns -col-md-auto</div> <!-- col-md-auto 用文字長度設定寬度, 且提供該文字寬度 寬度100% -->
-      <div class="col-12 col-sm-6"> One of three columns</div>
+    <div class="container">
+        <div class="row"> 
+          <div class="col-12 col-sm-6"> One of three columns</div> <!-- 設為獨佔12格, 當尺寸為sm規範時 改為6格的寬度大小 -->
+          <div class="col-md-auto"> One of three columns -col-md-auto</div> <!-- col-md-auto 用文字長度設定寬度, 且提供該文字寬度 寬度100% -->
+          <div class="col-12 col-sm-6"> One of three columns</div>
+        </div>
     </div>
-</div>
-
+<!-- ---------------------------------------------------------------------------------- -->
+    <div class="row">
+        <div class="col">One of three columns</div>
+        <div class="col ">One of three columns</div>
+        <div class="col order-1">One of three columns 1</div> <!-- order-* 填入數字可以改變排序順序 值為n1~12  -->
+        <div class="col order-3">One of three columns 3</div>
+        <div class="col order-12">One of three columns 12</div>
+        <div class="col order-2">One of three columns 2</div>
+        <div class="col order-n1">One of three columns N1</div>
+    </div>
+<!-- ------------------------------------------推移 offset------------------------------------------ -->
+<div class="container">
+    <div class="row">
+      <div class="col-4">div.col-1</div>
+    </div> 
+    <div class="row">
+      <!-- 4.4之後的版本, 這裡用的ml=margin colum 和 mr=margin row 可以設定推移到底填滿 -->
+      <div class="col-4 mr-auto">div.col-2</div> <!-- n5 ~ 5 || auto -->
+      <div class="col-4">div.col-3</div>
+    </div>
+    <div class="row">
+      <!-- (推薦使用) offset-* 或 offset-{breakpoint}-* 推移 col 的定位處。類似有個假想的不存在 col 幫忙吃掉該分配位置 -->
+      <!-- col連同offset的值 總和不可大於row的grid 12 否則換行 -->
+      <div class="col-4">div.col-4</div>
+      <div class="col-4 offset-4">div.col-5</div> <!-- 1 ~ 5 || auto(0)  -->
+    </div>
+  </div>
+  <!-- ------------------------------------------巢狀結構------------------------------------------ -->
+  <div class="container">
+    <div class="row"> <!-- 在row(父)裡加row(子)建立巢狀結構時, 子會繼承父的元素 -->
+      <div class="col-sm-9">Level 1: .col-sm-9
+        <div class="row">
+          <div class="col-8 col-sm-6">Level 2: .col-8 .col-sm-6</div>
+          <div class="col-4 col-sm-6">Level 2: .col-4 .col-sm-6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ------------------------------------------display操作------------------------------------------ -->
+   <!--   display在bootstrap
+          .d-inline
+          .d-block
+          .d-flex
+          剩下省略...   -->
 
 </body>
 </html> 
