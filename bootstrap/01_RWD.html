@@ -32,7 +32,7 @@
     <hr>
     <hr>
     <!-- ----------------------------原版/全開-------------------------------- -->
-    <div class="jumbotron">
+    <div class="jumbotron"> <!-- jumbotron 元件-廣告單元 -->
         <h1 class="display-4">Hello, World</h1>
         <p class="lead">This is a simple hero unir, a simple jumbotron-style component for calling extra attention to
             featrud content or information.</p>
@@ -40,7 +40,16 @@
             <p>It uses utility classes for typography and space content out within the larger container.</p>
             <a  class="btn btn-danger btn-lg" href="#" role="button">Learn more</a>
     </div>
-    <!-- ----------------------------新增class container改為窄版-------------------------------- -->
+    <!-- ----------------------------container-fluid 滿版-------------------------------- -->
+    <div class="container-fluid">
+        <div class="jumbotron">
+          <h1 class="display-4">Hello, world!</h1>
+          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+          <hr class="my-4">
+          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+    <!-- ----------------------------container(響應式) 改為窄版-------------------------------- -->
 <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">Hello, World</h1>
@@ -57,7 +66,7 @@
          lg以上(>992px)另一個狀態(960px)
      -->
     <div class="container-lg">
-        <div class="jumbotron">
+        <div class="jumbotron"> 
             <h1 class="display-4">Hello, World</h1>
             <p class="lead">This is a simple hero unir, a simple jumbotron-style component for calling extra attention to
                 featrud content or information.</p>
@@ -66,6 +75,6 @@
                 <a  class="btn btn-danger btn-lg" href="#" role="button">Learn more</a>
         </div>
     </div>
-    <!-- 響應式尺寸設定 sm md lg xl 要記一下 -->
+    <!-- 響應式尺寸設定 xs sm md lg xl 要記一下 -->
 </body>
 </html> 
