@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骰子</title>
+    <style>
+        .container{
+            text-align: center;
+        }
+        .dice{
+            width: 200px;
+            height: 200px;
+
+            /* 設置色塊陰影 */
+            background: linear-gradient(225deg,#ccc, #fff); 
+            border: 2px solid;
+            border-radius: 8%; /* 圓角 */
+            display: inline-block;
+            box-shadow: 7px 2px 20px 0 black;
+            
+            position: relative; /* 位置:相對, 讓point的absolute作為子, 限定在.dice{}的長寬範圍內 */
+        }
+        .point.red{
+            background: red;
+        }
+        .point{
+            width: 20%; /* dice寬高200px這裡取其1/10產生方塊 */
+            height: 20%;
+            background: black;
+            border-radius: 50%; /* 將產生的方塊變成圓點 */
+
+            /* 若無在.dice設置relative作為absolute的父, absolute會將point定位到body */
+            position: absolute; /* 位置:對應 將point定位在.dice{}內的相對位置 */
+        }
+        /* 
+           point使用總寬高200px的20%==40px
+           當容納3個point==120px, 200px-120px=80px
+           間隔有4個 所以80px/4=20px
+           而20px則==總寬高200px的10%
+           所以下述定位point多數用10%來推移point位置
+        */
+        .at1{
+            /* 等同left: 20px; */
+            left: 10%; 
+            bottom: 10%;
+        }
+        .at3{
+            right: 10%;
+            bottom: 10%;
+        }
+        .at4{
+            top: 40%;
+            left: 10%;
+        }
+        .at5{
+            /* 先設各50%作為中心點 */
+            left: 50%; 
+            top: 50%;
+            /* 轉換:偏移, X軸Y軸, 百分比是以自我本體去計算 */
+            /* point本體為40px, 如上述以本體計算 當向xy軸移動50%==移動20px(等同於一個間隔的大小) */
+            transform: translate(-50%,-50%); 
+        }
+        .at6{
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%); /* translateY指定Y軸偏移 */
+        }
+        .at7{
+            left: 10%;
+            top: 10%;
+        }
+        .at9{
+            right: 10%;
+            top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dice">
+            <div class="point red at5"></div>
+        </div>
+        <div class="dice">
+            <div class="point at7"></div>
+            <div class="point at3"></div>
+        </div>
+        <div class="dice">
+            <div class="point at7"></div>
+            <div class="point at5"></div>
+            <div class="point at3"></div>
+        </div>
+        <div class="dice">
+            <div class="point at7"></div>
+            <div class="point at9"></div>
+            <div class="point at1"></div>
+            <div class="point at3"></div>
+        </div>
+        <div class="dice">
+            <div class="point at7"></div>
+            <div class="point at9"></div>
+            <div class="point at5"></div>
+            <div class="point at1"></div>
+            <div class="point at3"></div>
+        </div>
+        <div class="dice">
+            <div class="point at7"></div>
+            <div class="point at9"></div>
+            <div class="point at4"></div>
+            <div class="point at6"></div>
+            <div class="point at1"></div>
+            <div class="point at3"></div>
+        </div>
+
+    </div>
+</body>
+</html>
