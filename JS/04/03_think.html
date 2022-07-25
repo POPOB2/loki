@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>think</title>
+    <style>
+        .container{
+            width: 960px;
+            margin: auto;
+            /* 總寬960px */
+        }
+        .item{
+            /* 一個div=w320px, 若w300+m20+p20=340會換行, 所以如下述使用border-box剛好為320
+               而三個320的div=960, 符合.container的總寬 所以不會換行 */
+            width: 300px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000;
+            float: left; /* float==浮動, 當子為float浮再版上最上方(Z軸)時 不會受到底下(父元素)的影響 */
+            position: relative; /* 父 */
+
+            /* border-box==包含margin在內的寬高(此為w300px=一個div為280px寬+左右各10px的margin=) */
+            box-sizing: border-box; 
+            /* 大多數人喜歡用border-box主要為,之後要調整內距時而只需動到padding,不須動到w和m */
+        }
+        .item img{
+            width: 100%;
+        }
+        .item .tab{
+            background-color: red;
+            padding: 5px 5px;
+            color: white;
+            position: absolute; /* 子 定位父 */
+            /* top+right定位absolute在relative內的位置 */
+            top:0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            <div class="tab">hot</div>
+            <img src="http://fakeimg.pl/300x200">
+            <h2>title</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adi
+                pisicing elit. Ipsum consequatur repellat es
+                se quidem atque? Ad est itaque reprehenderit 
+            </p>
+        </div>
+        <div class="item">
+            <div class="tab">hot</div>
+            <img src="http://fakeimg.pl/300x200">
+            <h2>title</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adi
+                pisicing elit. Ipsum consequatur repellat es
+                se quidem atque? Ad est itaque reprehenderit 
+            </p>
+        </div>
+        <div class="item">
+            <div class="tab">hot</div>
+            <img src="http://fakeimg.pl/300x200">
+            <h2>title</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adi
+                pisicing elit. Ipsum consequatur repellat es
+                se quidem atque? Ad est itaque reprehenderit 
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
