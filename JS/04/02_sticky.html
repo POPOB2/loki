@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sticky</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        
+        a:link{
+            color: white;
+            text-decoration: none;
+        }
+        a:visited{
+            color: white;
+        }
+        a:hover{
+            color: #ccc;
+        }
+        a:active{
+            color: white;
+        }
+
+
+        .menu{
+            background: black;
+            color: white;
+            font-size: 2rem;
+            list-style-type: none;
+            text-align: right;
+
+            /* 確保每個瀏覽器可以正常運作position用的, 因為瀏覽器版本問題可能不支援position */
+            position: -webkit-sticky; /* 非必要,但建議寫上 */
+
+            /* 讓東西黏在畫面上, 使內容可以跟著滾動軸往下移動 */
+            position: sticky; /* 平常是relative(普通), 離開viewpoint會變成fixed(固定) */
+            top: 2%; /* sticky的參考值, 使其定位 否則不會顯示 */
+        }
+        .menu>li{
+            display: inline-block; /* 將文字弄成一格 */
+            margin: 15px 40px; /* 擴大邊框 */
+        }
+        img{
+            display: block; /* 直接把img弄成block去除4px的都市傳說 */
+            
+            /* 圖片尺寸太大 使用100%寬使其等比縮小 讓li可以和背景銜接 */
+            width: 100%; 
+        }
+    </style>
+</head>
+<body>
+    <img src="http://picsum.photos/1920/800?random=1">
+    <nav class="menu">
+        <li><a href="http://www.google.com/">About</a> </li>
+        <li><a href="http://www.google.com/">Product</a> </li>
+        <li><a href="http://www.google.com/">Content</a> </li>
+    </nav>
+    <img src="http://picsum.photos/1920/1080?random=1">
+    <img src="http://picsum.photos/1920/1080?random=2">
+    <img src="http://picsum.photos/1920/1080?random=3">
+</body>
+</html>
