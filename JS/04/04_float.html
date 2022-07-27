@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float</title>
+    <!-- 在float使用順序上, 只會影響float之後的東西的排版, 不會影響前面的 -->
+    <style>
+        .container{
+            width: 300px;
+            margin: auto;
+        }
+        img{
+            /* 當inline等元素, 變成浮動元素時,不論是什麼 用了float一概都變成block */
+            /* float: left; */
+            float: right;
+        }
+        span{
+            /* float:left; */
+            float: right;
+            color: red;
+            /* 原本span帶有inline屬性不能使用margin高度或寬高設定
+               在使用了float使span變block元素後,這些就都可以用了 */
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lorem ipsum dolor sit enetur soluta expedita.</h1>
+        <img src="http://picsum.photos/100/100?random=1">
+        <img src="http://picsum.photos/100/100?random=2"> 
+        <!-- img並非block, 之所以換行是因為p才是block -->
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Sit animi ad quidem odit, voluptatum voluptas. Molestiae, 
+            quas!<span>Harum</span>perspiciatis, ab incidunt nisi praesentium voluptas 
+            voluptatibus ipsam porro magni, dignissimos minus.</p>
+    </div>
+</body>
+</html>
