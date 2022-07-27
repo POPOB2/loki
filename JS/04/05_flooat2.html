@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float2 關於清除float不影響排版</title>
+    <style>
+        .container{
+            width: 960px;
+            margin: 0 auto;
+            border: 1px solid blue;
+            /* 當碰到float異位現象的解決方法: */
+            /* 方法一.取消異位,使其重新去偵測float的高度為多少, 拿回該高度撐起.container高度 */
+            /* overflow: hidden; */
+
+        }
+        /* 方法四.較推薦的方法:使用偽元素清除與調整, 且為了確保確實清除 會使用兩個偽元素  before和after做前後清除 */
+        .clear::before,.clear::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .col{
+            width: 300px;
+            margin: 10px;
+            box-sizing: border-box;
+            border: 5px solid lightcoral;
+            padding: 10px;
+            /* 使用了float後.container失去用內容撐開的高度, 因為裡面的.col使用了float浮起來 已不再.container內
+               所以.container的藍色邊框縮到最上方 */
+            float: left; 
+        }
+        .clrbox{
+            /* float異位現象:
+               使用float的缺點 1.東西會重疊 排版上要注意  2.float實際上還是會占用瀏覽器的"內容"高度
+               因為使用了float的.col"內容"佔用了版面, 所以下列的.clrbox內容還是顯示於.col下方
+               而非.clrbox的綠色區塊內, 導致背景與內容被拆開
+               */
+            width: 960px;
+            height: 50px;
+            border: 1px solid red;
+            background: lightgreen;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 將方法四的clear寫在container後 -->
+    <!-- <div class="container clear"> -->
+    <div class="container">
+        <div class="col">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Eius, incidunt! Corrupti, recusandae a, 
+            quaerat voluptate maiores, voluptatibus culpa aut iure 
+            aliquid vel enim. Sed dolores quam eveniet tenetur mollitia dolor.
+        </div>
+
+        <div class="col">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Eius, incidunt! Corrupti, recusandae a, 
+            quaerat voluptate maiores, voluptatibus culpa aut iure 
+            aliquid vel enim. Sed dolores quam eveniet tenetur mollitia dolor.
+        </div>
+
+        <div class="col">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Eius, incidunt! Corrupti, recusandae a, 
+            quaerat voluptate maiores, voluptatibus culpa aut iure 
+            aliquid vel enim. Sed dolores quam eveniet tenetur mollitia dolor.
+        </div>
+        <!-- 方法二.在float內容下方新增一個獨立內容, 讓.container可以因為該內容撐回高度
+             但不推薦這個做法 因為會在版面出現不必要的內容, 僅用為理解 -->
+            <!-- <p>新增P,因位於float下方顯示 所以.container以P作為底, 撐出高度,使下方clrbox的內容與背景正常貼合</p> -->
+
+        <!-- 方法三.在父標籤(container)內結尾的地方放上clear:both; 關閉float 
+             也不推薦這個做法 這樣變成前面設一堆float都沒意義, 程式碼較髒-->
+            <!-- <div style="clear: both;"></div> -->
+        
+        <!-- 方法四.設置一個after偽元素在尾巴放上clear:both清除, 但不建議寫一個偽元素只for這個區塊的float
+             因為一個網頁可能有不只一個地方要做這種處理, 建議如上方CSS(18行)所寫
+             特別寫一個可適用於多個區塊的.clear::偽元素 作為工具使用 -->
+    </div>
+    <div class="clrbox">我是綠色區塊的內容</div>
+</body>
+</html>
